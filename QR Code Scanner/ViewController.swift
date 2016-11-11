@@ -66,6 +66,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         avCaptureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
         
         let avCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: avCaptureSession)
+        avCaptureVideoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         avCaptureVideoPreviewLayer?.frame = videoPreview.bounds
         self.videoPreview.layer.addSublayer(avCaptureVideoPreviewLayer!)
         
