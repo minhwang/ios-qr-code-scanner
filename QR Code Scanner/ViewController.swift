@@ -39,7 +39,13 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
-        print("captured")
+        
+        if metadataObjects.count > 0 {
+            let machineReadableCode = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+            if machineReadableCode.type == AVMetadataObjectTypeQRCode {
+                print(machineReadableCode.stringValue)
+            }
+        }
     }
 
     func scanQRCode() throws {
